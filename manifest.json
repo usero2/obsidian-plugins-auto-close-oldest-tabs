@@ -1,6 +1,6 @@
 {
-  "id": "auto-close-tabs",
-  "name": "Auto Close Tabs",
+  "id": "auto-close-oldest-tabs",
+  "name": "Auto Close Oldest Tabs",
   "version": "1.0.0",
   "minAppVersion": "1.0.0",
   "description": "Automatically close the oldest tab when a maximum tab limit is reached.",
