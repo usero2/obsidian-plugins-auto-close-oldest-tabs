@@ -4,7 +4,7 @@ var obsidian = require('obsidian');
 
 const DEFAULT_SETTINGS = {
     maxTabs: 3,
-    alwaysNewTab: false
+    alwaysNewTab: true
 };
 
 class AutoCloseTabsPlugin extends obsidian.Plugin {

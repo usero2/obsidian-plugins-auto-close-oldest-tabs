@@ -7,7 +7,7 @@ interface AutoCloseTabsSettings {
 
 const DEFAULT_SETTINGS: AutoCloseTabsSettings = {
 	maxTabs: 3,
-	alwaysNewTab: false
+	alwaysNewTab: true
 }
 
 export default class AutoCloseTabsPlugin extends Plugin {
