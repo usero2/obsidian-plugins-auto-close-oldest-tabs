@@ -1,4 +1,4 @@
-# Obsidian Auto Close Tabs
+# Obsidian Auto Close Oldest Tabs
 
 A lightweight Obsidian plugin that helps you keep your workspace clean by automatically closing the oldest tabs when you reach a predefined limit. 
 No more endless cluttered tabs! Just set your desired limit, and the plugin will seamlessly close your least recently used (LRU) tabs in the background.
