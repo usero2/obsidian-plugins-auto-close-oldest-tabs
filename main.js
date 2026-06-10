@@ -7,7 +7,7 @@ const DEFAULT_SETTINGS = {
     alwaysNewTab: true
 };
 
-class AutoCloseTabsPlugin extends obsidian.Plugin {
+class AutoCloseOldestTabsPlugin extends obsidian.Plugin {
     constructor(app, manifest) {
         super(app, manifest);
         this.leafHistory = [];
@@ -18,7 +18,7 @@ class AutoCloseTabsPlugin extends obsidian.Plugin {
     async onload() {
         await this.loadSettings();
         
-        this.addSettingTab(new AutoCloseTabsSettingTab(this.app, this));
+        this.addSettingTab(new AutoCloseOldestTabsSettingTab(this.app, this));
 
         this.app.workspace.onLayoutReady(() => {
             this.patchWorkspace();
@@ -129,7 +129,11 @@ class AutoCloseTabsPlugin extends obsidian.Plugin {
         }
 
         allLeaves.sort((a, b) => {
-            return this.leafHistory.indexOf(a) - this.leafHistory.indexOf(b);
+            const indexA = this.leafHistory.indexOf(a);
+            const indexB = this.leafHistory.indexOf(b);
+            const valA = indexA === -1 ? Infinity : indexA;
+            const valB = indexB === -1 ? Infinity : indexB;
+            return valA - valB;
         });
 
         const numToClose = allLeaves.length - this.settings.maxTabs;
@@ -149,7 +153,7 @@ class AutoCloseTabsPlugin extends obsidian.Plugin {
     }
 }
 
-class AutoCloseTabsSettingTab extends obsidian.PluginSettingTab {
+class AutoCloseOldestTabsSettingTab extends obsidian.PluginSettingTab {
     constructor(app, plugin) {
         super(app, plugin);
         this.plugin = plugin;
@@ -185,4 +189,4 @@ class AutoCloseTabsSettingTab extends obsidian.PluginSettingTab {
     }
 }
 
-module.exports = AutoCloseTabsPlugin;
+module.exports = AutoCloseOldestTabsPlugin;

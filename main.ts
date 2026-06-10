@@ -1,17 +1,17 @@
 import { App, Plugin, PluginSettingTab, Setting, WorkspaceLeaf } from 'obsidian';
 
-interface AutoCloseTabsSettings {
+interface AutoCloseOldestTabsSettings {
 	maxTabs: number;
 	alwaysNewTab: boolean;
 }
 
-const DEFAULT_SETTINGS: AutoCloseTabsSettings = {
+const DEFAULT_SETTINGS: AutoCloseOldestTabsSettings = {
 	maxTabs: 3,
 	alwaysNewTab: true
 }
 
-export default class AutoCloseTabsPlugin extends Plugin {
-	settings: AutoCloseTabsSettings;
+export default class AutoCloseOldestTabsPlugin extends Plugin {
+	settings: AutoCloseOldestTabsSettings;
 	leafHistory: WorkspaceLeaf[] = [];
 	originalGetLeaf: any;
 	enforceTimeout: number | null = null;
@@ -19,7 +19,7 @@ export default class AutoCloseTabsPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		this.addSettingTab(new AutoCloseTabsSettingTab(this.app, this));
+		this.addSettingTab(new AutoCloseOldestTabsSettingTab(this.app, this));
 
 		this.app.workspace.onLayoutReady(() => {
 			this.patchWorkspace();
@@ -143,7 +143,11 @@ export default class AutoCloseTabsPlugin extends Plugin {
 		// If a leaf is not in history (index -1), it means it was just opened and active-leaf-change hasn't fired yet.
 		// We should treat it as the NEWEST leaf, not the oldest, so give it Infinity.
 		allLeaves.sort((a, b) => {
-			return this.leafHistory.indexOf(a) - this.leafHistory.indexOf(b);
+			const indexA = this.leafHistory.indexOf(a);
+			const indexB = this.leafHistory.indexOf(b);
+			const valA = indexA === -1 ? Infinity : indexA;
+			const valB = indexB === -1 ? Infinity : indexB;
+			return valA - valB;
 		});
 
 		const numToClose = allLeaves.length - this.settings.maxTabs;
@@ -164,10 +168,10 @@ export default class AutoCloseTabsPlugin extends Plugin {
 	}
 }
 
-class AutoCloseTabsSettingTab extends PluginSettingTab {
-	plugin: AutoCloseTabsPlugin;
+class AutoCloseOldestTabsSettingTab extends PluginSettingTab {
+	plugin: AutoCloseOldestTabsPlugin;
 
-	constructor(app: App, plugin: AutoCloseTabsPlugin) {
+	constructor(app: App, plugin: AutoCloseOldestTabsPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

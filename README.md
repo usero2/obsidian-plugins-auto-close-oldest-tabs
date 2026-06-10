@@ -3,7 +3,7 @@
 A lightweight Obsidian plugin that helps you keep your workspace clean by automatically closing the oldest tabs when you reach a predefined limit. 
 No more endless cluttered tabs! Just set your desired limit, and the plugin will seamlessly close your least recently used (LRU) tabs in the background.
 
-![](https://github.com/usero2/obsidian-plugins-auto-close-tabs/blob/main/images/Obsidian_kLr2D4McOE.gif)
+![](https://github.com/usero2/obsidian-plugins-auto-close-oldest-tabs/blob/main/images/Obsidian_kLr2D4McOE.gif)
 
 ## Features
 
@@ -15,14 +15,14 @@ No more endless cluttered tabs! Just set your desired limit, and the plugin will
 
 ### Manual Installation
 1. Download the latest release (`main.js`, `manifest.json`, `styles.css` if any).
-2. Create a folder named `obsidian-plugins-auto-close-tabs` inside your vault's `.obsidian/plugins/` directory.
+2. Create a folder named `obsidian-plugins-auto-close-oldest-tabs` inside your vault's `.obsidian/plugins/` directory.
 3. Place the downloaded files into that folder.
 4. Reload Obsidian and turn off **Safe Mode** in `Settings > Community plugins`.
-5. Enable the "Auto Close Tabs" plugin.
+5. Enable the "Auto Close Oldest Tabs" plugin.
 
 ## Usage & Settings
 
-Once the plugin is enabled, you can configure it via `Settings > Auto Close Tabs`:
+Once the plugin is enabled, you can configure it via `Settings > Auto Close Oldest Tabs`:
 
 1. **Maximum open tabs**: Enter the maximum number of tabs you want to keep open (Default is `3`). Once you open the 4th tab, the oldest tab will automatically close.
 2. **Always open in new tab**: Toggle this ON if you want clicks on internal links and files to always open in a new tab instead of replacing the one you are currently reading.

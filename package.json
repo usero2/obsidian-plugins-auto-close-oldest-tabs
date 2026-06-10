@@ -1,6 +1,6 @@
 {
-  "name": "auto-close-tabs",
-  "version": "1.0.0",
+  "name": "auto-close-oldest-tabs",
+  "version": "1.0.1",
   "description": "Automatically close the oldest tab when a maximum tab limit is reached.",
   "main": "main.js",
   "scripts": {
