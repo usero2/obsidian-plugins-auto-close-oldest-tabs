@@ -27,6 +27,11 @@ Once the plugin is enabled, you can configure it via `Settings > Auto Close Olde
 1. **Maximum open tabs**: Enter the maximum number of tabs you want to keep open (Default is `3`). Once you open the 4th tab, the oldest tab will automatically close.
 2. **Always open in new tab**: Toggle this ON if you want clicks on internal links and files to always open in a new tab instead of replacing the one you are currently reading.
 
+## Changelog
+
+### v1.0.1
+- **Bug Fix**: Fixed a critical logic bug where newly opened tabs were incorrectly identified as the oldest tabs and closed immediately when the tab limit was reached.
+
 ## ❤️ Support & Donate
 
 If this plugin has improved your Obsidian workflow, saved you time, or you just want to support its continued development, please consider donating! 
